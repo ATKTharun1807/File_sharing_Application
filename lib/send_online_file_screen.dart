@@ -212,7 +212,7 @@ class SendOnlineFileScreenState extends State<SendOnlineFileScreen> {
                         }
                       : null,
                 );
-              }).toList(),
+              }),
           ],
         ),
       ),
@@ -238,7 +238,7 @@ class SendOnlineFileScreenState extends State<SendOnlineFileScreen> {
                             size: 200.0,
                           ),
                         );
-                      }).toList(),
+                      }),
                     ],
                   ),
                 ),

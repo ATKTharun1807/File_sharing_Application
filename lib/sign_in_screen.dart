@@ -15,7 +15,10 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    clientId:
+        "844599229027-mdc06t32oglbv49ea4gajeqigpdm0asf.apps.googleusercontent.com",
+  );
   final Logger _logger = Logger();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -55,7 +58,8 @@ class _SignInScreenState extends State<SignInScreen> {
       if (googleUser == null) {
         return;
       }
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -85,15 +89,18 @@ class _SignInScreenState extends State<SignInScreen> {
       builder: (ctx) {
         TextEditingController emailController = TextEditingController();
         return AlertDialog(
-          title: const Text("Reset Password", style: TextStyle(color: Colors.black)),
+          title: const Text("Reset Password",
+              style: TextStyle(color: Colors.black)),
           content: TextField(
             controller: emailController,
-            decoration: const InputDecoration(labelText: "Enter your email", border: OutlineInputBorder()),
+            decoration: const InputDecoration(
+                labelText: "Enter your email", border: OutlineInputBorder()),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(),
-              child: const Text("Cancel", style: TextStyle(color: Colors.black)),
+              child:
+                  const Text("Cancel", style: TextStyle(color: Colors.black)),
             ),
             TextButton(
               onPressed: () async {
@@ -105,7 +112,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.of(ctx).pop();
                     // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Password reset email sent.")),
+                      const SnackBar(
+                          content: Text("Password reset email sent.")),
                     );
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
@@ -138,7 +146,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],  // Background color to match your design
+      backgroundColor:
+          Colors.grey[200], // Background color to match your design
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -157,7 +166,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                
+
                 // Tagline
                 const Text(
                   'Simplify Your Sharing, Elevate Your Experience!',
@@ -168,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
-                
+
                 // Email and Password Fields Container
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -240,7 +249,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                           onPressed: _signInWithEmail,
-                          child: const Text("Sign In", style: TextStyle(color: Colors.white)),
+                          child: const Text("Sign In",
+                              style: TextStyle(color: Colors.white)),
                         ),
                       ),
                     ],
@@ -252,25 +262,28 @@ class _SignInScreenState extends State<SignInScreen> {
                 // Forgot Password Link
                 TextButton(
                   onPressed: _resetPassword,
-                  child: const Text("Forgot password?", style: TextStyle(color: Colors.blue)),
+                  child: const Text("Forgot password?",
+                      style: TextStyle(color: Colors.blue)),
                 ),
-                
+
                 const SizedBox(height: 20),
 
                 // Register Link and Divider
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? ", style: TextStyle(color: Colors.grey[600])),
+                    Text("Don't have an account? ",
+                        style: TextStyle(color: Colors.grey[600])),
                     TextButton(
                       onPressed: _navigateToSignUp,
-                      child: const Text("Register Now!", style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: const Text("Register Now!",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
 
                 const SizedBox(height: 12),
-                
+
                 const Text("OR", style: TextStyle(color: Colors.grey)),
                 const SizedBox(height: 12),
 
@@ -289,7 +302,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       children: [
                         Image.asset('assets/google.png', height: 20),
                         const SizedBox(width: 8),
-                        const Text("Sign in with Google", style: TextStyle(color: Colors.black)),
+                        const Text("Sign in with Google",
+                            style: TextStyle(color: Colors.black)),
                       ],
                     ),
                   ),

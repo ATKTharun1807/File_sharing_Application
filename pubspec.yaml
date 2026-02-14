@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   file_picker: ^8.1.2
-  intl: ^0.19.0
+  intl: ^0.20.2
   firebase_core: ^3.6.0 # Change to a compatible version
   firebase_auth: ^5.3.1 # Change to a compatible version
   cloud_firestore: ^5.4.4 # Change to a compatible version
@@ -72,6 +72,7 @@ dependencies:
   json_serializable: ^6.9.0
   open_file: ^3.0.2
   fluttertoast: ^8.2.10
+  device_preview: ^1.2.0
   
 dependency_overrides:
   collection: ^1.19.0
